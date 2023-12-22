@@ -57,7 +57,7 @@ class _viewNotesScreenState extends State<viewNotesScreen> {
             icon: Icon(Icons.exit_to_app),
           )
         ],
-        backgroundColor: Colors.cyan,
+        backgroundColor: Colors.teal,
       ),
       body: ListView(
         children: [
@@ -103,11 +103,11 @@ class _viewNotesScreenState extends State<viewNotesScreen> {
             }),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton( backgroundColor: Colors.teal,
         onPressed: () {
           Get.off(addNotesScreen());
         },
-        child: Icon(Icons.add),
+        child: Icon(Icons.add ),
       ),
     );
   }

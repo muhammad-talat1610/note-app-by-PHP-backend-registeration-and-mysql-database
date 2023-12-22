@@ -66,38 +66,31 @@ class _RegisterScreenState extends State<SignUp> {
                 children: [
                   Center(
                       child: Text(
-                    "Care For You.",
+                    "Note App.",
                     style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
                         color: mainColor),
                   )),
                   SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
                   Center(
                       child: Text(
                     "Sign Up".tr,
                     style: TextStyle(
-                        fontSize: 30,
+                        fontSize: 25,
                         fontWeight: FontWeight.bold,
                         color: mainColor),
                   )),
                   SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
-                  Center(
-                      child: Text(
-                    "Nursing , Care , Help".tr,
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w400,
-                        color: mainColor),
-                  )),
+
                 ],
               ),
               SizedBox(
-                height: 50,
+                height: 20,
               ),
               TextFormFieldScreen(
                 controller: usernameController,

@@ -1,15 +1,16 @@
+import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-
 String _basicAuth = 'Basic ' +
     base64Encode(utf8.encode(
-        'wael:wael12345'));
+        'hamo:Hamo161020@'));
 
 Map<String, String> myheaders = {
   'authorization': _basicAuth
 };
 
+// دول عشان الجزء بتاع اخفاء الداتا + الاتثال بالباك انت بدون فتح ماي سيقوال
 
 
 class Crud {
@@ -28,10 +29,11 @@ class Crud {
    }
  postData(String url, Map data) async {
   try {
-    var response = await http.post(Uri.parse(url), body: data);
+    var response = await http.post(Uri.parse(url), body: data ,  headers: myheaders);
 
     if (response.statusCode == 200) {
       var responseBody = jsonDecode(response.body);
+      //http.Request.headers.addAll(myheaders);
       return responseBody;
     } else {
       throw Exception('Failed to load data: ${response.statusCode}');
