@@ -4,9 +4,9 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:get/get_core/src/get_main.dart';
 import 'package:untitled/Apis/crud.dart';
-import 'package:untitled/Apis/server%20ink.dart';
 import 'package:untitled/view/screen/reg&login_Screen%20(auth)/signIn.dart';
-import '../../../note app.dart';
+import '../../../Apis/linkapi.dart';
+import '../../../Apis/notes operation/viewNotes.dart';
 import '../../../services/services.dart';
 import '../../../themes/apptheme.dart';
 import '../../widget/widgets screen (all widgets).dart';
@@ -26,43 +26,42 @@ class _RegisterScreenState extends State<SignUp> {
   final TextEditingController passwordController = TextEditingController();
   SettingServices myServices = Get.find();
   Crud crud = Crud();
-  SignUpData()async{
-  var response = await crud.postData(LinkSignUp, {
-      "name":usernameController.text,
-      "email" :emailController.text,
-   "password": passwordController.text,
+ Future SignUpData() async {
+    var response = await crud.postData(LinkSignUp, {
+      "name": usernameController.text,
+      "email": emailController.text,
+      "password": passwordController.text,
     });
 
-    if(response["status"]=="success"){
-      myServices.sharedPrefer.setString("login", "1");
-      Get.off(noteAppScreen());
-      Get.snackbar("تسجيل الدخول", "تـم تسجيل الدخول بنجاح") ;
-  //    myServices.sharedPrefer.setString("login", "1");
-
-
-    }
-    else{
-      print(" Sign In Fail");
-      Get.snackbar("Sign In Fail", "Fail in Email or Password Please Re-enter agian! ",
-          backgroundColor: Colors.amber
-          ,borderColor:Colors.cyan, borderWidth: 1.5 , snackPosition:SnackPosition.BOTTOM
-
+    if (response != null && response["status"] == "success") {
+      Get.off(viewNotesScreen());
+      myServices.sharedPrefer.setString("finishLogin", "1");
+      Get.snackbar("تسجيل الدخول", "تـم تسجيل الدخول بنجاح");
+    } else {
+      print("Sign Up Fail");
+      Get.snackbar(
+        "Sign Up Fail",
+        "Fail in Sign Up. Please try again!",
+        backgroundColor: Colors.amber,
+        borderColor: Colors.cyan,
+        borderWidth: 1.5,
+        snackPosition: SnackPosition.BOTTOM,
       );
     }
   }
+
 
   Widget build(BuildContext context) {
     final isDark=Theme.of(context).brightness==Brightness.dark;
     dynamic fontcolor=isDark?grayColor:mainColor;
 
   return Scaffold(
-      body: Container(
-        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-        child: Form(
-          key: FormKeySignUp,
-          child: ListView(
-            children: [
-              Column(
+    body:Container(
+      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+      child: Form(
+        key: FormKeySignUp,
+        child: ListView(children: [
+          Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Center(
@@ -133,7 +132,7 @@ class _RegisterScreenState extends State<SignUp> {
                     prefix: Icons.lock,
                     validator: (value) {
                       return ValidatorScreen(
-                          value!, 6, 90, "passwordController1");
+                          value!, 6, 90, "passwordController");
                     },
                     suffixIcon: controller.isshowPassword
                         ? Icons.visibility_outlined

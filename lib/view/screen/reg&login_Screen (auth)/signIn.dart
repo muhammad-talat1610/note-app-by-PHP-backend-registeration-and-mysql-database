@@ -1,12 +1,11 @@
-import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:untitled/Apis/server%20ink.dart';
 import 'package:untitled/view/screen/reg&login_Screen%20(auth)/signUp.dart';
 import '../../../Apis/crud.dart';
-import '../../../note app.dart';
+import '../../../Apis/linkapi.dart';
+import '../../../Apis/notes operation/viewNotes.dart';
 import '../../../services/services.dart';
 import '../../../themes/apptheme.dart';
 import '../../widget/widgets screen (all widgets).dart';
@@ -27,28 +26,25 @@ class _SignInState extends State<SignIn> {
     dynamic fontcolor=isDark?grayColor:mainColor;
     final TextEditingController emailController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
-    bool _isLoading = false;
     SettingServices myServices = Get.find();
-    //myServices.sharedPrefer.setString("login", "1");
+    myServices.sharedPrefer.setString("login", "1");
 
     Crud crud = Crud();
     LoginData()async{
       var response = await crud.postData(LinkSignIn, {
-        "email" :emailController.text,
-        "password": passwordController.text,
+        "email" : emailController.text ,
+        "password" : passwordController.text,
       });
 
-      if (response["status"]=='success') {
-        if (response['data'] != null && response['data']['id'] != null) {
-          myServices.sharedPrefer.setString("login", "1");
-          // Assuming 'id' is a String in the response data
+      if (response["status"]=="success") {
+        myServices.sharedPrefer.setString("finishLogin", "1");
+      if (response['data'] != null && response['data']['id'] != null) {
          myServices.sharedPrefer.setString("id", response['data']['id'].toString());
-          Get.off(noteAppScreen());
+         Get.off(
+             viewNotesScreen()
+         );
           Get.snackbar("تسجيل الدخول", "تـم تسجيل الدخول بنجاح");
-          myServices.sharedPrefer.setString("login", "1");
         } else {
-          // Handle if 'id' is missing or null in the response data
-          // You might display an error or log a message here
           print("ID is missing or null in the response data");
         }
       }
@@ -125,6 +121,7 @@ class _SignInState extends State<SignIn> {
               onPressed: () async {
                 if (FormKey.currentState!.validate()) {
                   LoginData();
+
                 }},),
 
 

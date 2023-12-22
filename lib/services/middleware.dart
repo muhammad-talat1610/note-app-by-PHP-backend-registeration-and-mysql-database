@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/src/routes/get_route.dart';
-import 'package:get/get_navigation/src/routes/route_middleware.dart';
 import 'package:untitled/services/services.dart';
-import '../note app.dart';
+
+import '../Apis/notes operation/add_notes.dart';
+import '../Apis/notes operation/viewNotes.dart';
 import '../view/screen/Language.dart';
 import '../view/screen/reg&login_Screen (auth)/forgetpassword/forgetpassword.dart';
 import '../view/screen/reg&login_Screen (auth)/forgetpassword/resetPassword.dart';
@@ -12,6 +11,7 @@ import '../view/screen/reg&login_Screen (auth)/forgetpassword/verifycode.dart';
 import '../view/screen/reg&login_Screen (auth)/signIn.dart';
 import '../view/screen/reg&login_Screen (auth)/signUp.dart';
 
+SettingServices myServices = Get.find();
 
 class MyMiddleWare extends GetMiddleware {
   int? get priority => 1;
@@ -21,9 +21,10 @@ class MyMiddleWare extends GetMiddleware {
     //   return const RouteSettings(name: AppRoute.login) ;
     // }}
    // myServices.sharedPrefer.setString("id" , "notes_users");
-    if(myServices.sharedPrefer.getString("login") == "1"){
-      return const RouteSettings(name: AppRoute.noteAppScreen) ;
-    }}
+    if(myServices.sharedPrefer.getString("finishLogin") == "1"){
+      return const RouteSettings(name: AppRoute.viewNotes) ;
+    }
+  }
 
 }
 
@@ -38,7 +39,8 @@ class AppRoute {
   static const String successResetpassword = "/successresetpassword";
   static const String checkemail = "/checkemail";
   static const String verfiyCodeSignUp = "/verfiycodesignup";
-  static const String noteAppScreen = "/noteAppScreen";
+  static const String viewNotes = "/viewNotes";
+  static const String addNotes = "/addNotes";
 }
 List<GetPage<dynamic>>? routes = [
   GetPage(name: "/", page: () => AppLanguage() , middlewares: [MyMiddleWare()]),
@@ -48,7 +50,8 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoute.forgetPassword, page: () => ForgetPassword()),
   GetPage(name: AppRoute.verfiyCode, page: () =>  VerfiyCode()),
   GetPage(name: AppRoute.resetPassword, page: () =>  resetPassword()),
-  GetPage(name: AppRoute.noteAppScreen, page: () =>  noteAppScreen()),
+  GetPage(name: AppRoute.viewNotes, page: () =>  viewNotesScreen()),
+  GetPage(name: AppRoute.addNotes, page: () =>  addNotesScreen()),
   // GetPage(name: AppRoute.successResetpassword, page: () => const SuccessResetPassword()),
   // GetPage(name: AppRoute.successSignUp, page: () => const SuccessSignUp()),
   // GetPage(name: AppRoute.onBoarding, page: () => const OnBoarding()),

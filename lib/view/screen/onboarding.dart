@@ -18,14 +18,14 @@ class onboarding extends StatelessWidget {
       onFinish: () {
          // SettingServices myservices = Get.find();
          myservices.sharedPrefer?.setString("onboarding", "1");
-
-        Navigator.push(
-          context,
-          CupertinoPageRoute(
-            builder: (context) =>  SignUp(),
-
-          ),
-        );
+Get.off(SignUp());
+        // Navigator.push(
+        //   context,
+        //   CupertinoPageRoute(
+        //     builder: (context) =>  SignUp(),
+        //
+        //   ),
+        // );
         },
       finishButtonStyle: FinishButtonStyle(
         backgroundColor: kDarkBlueColor,
@@ -74,7 +74,7 @@ class onboarding extends StatelessWidget {
           'assets/images/onboardingone.PNG',
           height: 200,
         ),
-      ],  imageVerticalOffset: 100,imageHorizontalOffset: 100,
+      ],  imageVerticalOffset: 25,imageHorizontalOffset: 100,
       speed: 1.8,
       pageBodies: [
         Container(
@@ -86,7 +86,7 @@ class onboarding extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               const SizedBox(
-                height: 350,
+                height: 300,
               ),
               Text(
                 'On your way...',
@@ -98,7 +98,7 @@ class onboarding extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
               const Text(
                 'to find the perfect looking Onboarding for your app?',
@@ -133,7 +133,7 @@ class onboarding extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 5,
               ),
                Text(
                 'Sliding with animation',
@@ -151,35 +151,37 @@ class onboarding extends StatelessWidget {
           alignment: Alignment.center,
           width: MediaQuery.of(context).size.width,
           padding: const EdgeInsets.symmetric(horizontal: 40),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              const SizedBox(
-                height: 300,
-              ),
-              Text(
-                'Start now!',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: kDarkBlueColor,
-                  fontSize: 24.0,
-                  fontWeight: FontWeight.w600,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                const SizedBox(
+                  height: 220,
                 ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              const Text(
-                'Where everything is possible and customize your onboarding.',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.black26,
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.w600,
+                Text(
+                  'Start now!',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: kDarkBlueColor,
+                    fontSize: 24.0,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
-              ),
-            ],
+                const SizedBox(
+                  height: 10,
+                ),
+                const Text(
+                  'Where everything is possible and customize your onboarding.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black26,
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ],

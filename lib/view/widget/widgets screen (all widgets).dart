@@ -240,7 +240,7 @@ class TextFormFieldScreen extends StatelessWidget {
   TextFormFieldScreen(
       {Key? key, required this.controller, required this.keyboardType,
         required this.label,  this.prefix,this.obsureText , this.suffixIcon,
-        required this.validator, this.onPressed, this.onTap,  }) : super(key: key);
+         this.validator, this.onPressed, this.onTap,  }) : super(key: key);
 
   Widget build(BuildContext context) {    final isDark=Theme.of(context).brightness==Brightness.dark;
   dynamic fontcolor=isDark?Colors.white:Colors.black;
