@@ -23,7 +23,6 @@ samples, guidance on mobile development, and a full API reference.
 ![  (6)](https://github.com/muhammad-talat1610/note-app-with-PHP-registeration-and-mysql-database/assets/128619762/852cc98b-ff32-45ed-8460-89e0462da400)
 ![  (7)](https://github.com/muhammad-talat1610/note-app-with-PHP-registeration-and-mysql-database/assets/128619762/de639ef5-000b-4021-8492-9ad780f70600)
 ![  (8)](https://github.com/muhammad-talat1610/note-app-with-PHP-registeration-and-mysql-database/assets/128619762/891cf8e7-e7f8-4409-af5c-b7a6db6d01a4)
-![  (9)](https://github.com/muhammad-talat1610/note-app-with-PHP-registeration-and-mysql-database/assets/128619762/849784bb-442a-4031-96ab-9ccc9e3d9cbf)
 ![  (10)](https://github.com/muhammad-talat1610/note-app-with-PHP-registeration-and-mysql-database/assets/128619762/6c54c807-56d4-44ae-b28a-592e5fc126eb)
 ![  (11)](https://github.com/muhammad-talat1610/note-app-with-PHP-registeration-and-mysql-database/assets/128619762/9964108d-5b8b-4ee1-8d5b-3eeaad01cbf3)
 ![  (12)](https://github.com/muhammad-talat1610/note-app-with-PHP-registeration-and-mysql-database/assets/128619762/25cc0429-1ec0-42a2-8c35-30ed72288f46)
